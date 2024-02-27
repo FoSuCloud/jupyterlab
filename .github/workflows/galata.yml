@@ -55,7 +55,6 @@ jobs:
       - name: Test
         run: |
           cd galata
-          playwright --version
           jlpm run test --project galata jupyterlab
           mv galata/test-results galata/test-jupyterlab-results || true
           # Run once benchmark tests to ensure they have no regression
@@ -166,7 +165,6 @@ jobs:
       - name: Test
         run: |
           cd galata
-          playwright --version
           jlpm run test:doc
         working-directory: core
 
