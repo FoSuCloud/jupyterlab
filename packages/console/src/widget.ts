@@ -94,6 +94,12 @@ const JUPYTER_CELL_MIME = 'application/vnd.jupyter.cells';
 const UNDOER = 'jpUndoer';
 
 /**
+ * The data attribute Whether the console interaction mimics the notebook
+ * or terminal keyboard shortcuts.
+ */
+const INTERACTION_MODE = 'jpInteractionMode';
+
+/**
  * A widget containing a Jupyter console.
  *
  * #### Notes
@@ -789,6 +795,7 @@ export class CodeConsole extends Widget {
    * Create the options used to initialize a code cell widget.
    */
   private _createCodeCellOptions(): CodeCell.IOptions {
+    const { node } = this;
     const contentFactory = this.contentFactory;
     const modelFactory = this.modelFactory;
     const model = modelFactory.createCodeCell({});
@@ -798,7 +805,10 @@ export class CodeConsole extends Widget {
     // Suppress the default "Enter" key handling.
     const onKeyDown = EditorView.domEventHandlers({
       keydown: (event: KeyboardEvent, view: EditorView) => {
-        if (event.keyCode === 13) {
+        if (
+          event.keyCode === 13 &&
+          node.dataset[INTERACTION_MODE] === 'terminal'
+        ) {
           event.preventDefault();
           return true;
         }
