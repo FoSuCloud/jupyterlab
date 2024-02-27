@@ -164,7 +164,8 @@ test.describe('Completer', () => {
       await page.keyboard.insertText('import getopt');
       await page.waitForTimeout(500);
       await page.keyboard.press('Enter');
-      await page.keyboard.insertText('getopt.');
+      await page.waitForTimeout(500);
+      await page.keyboard.type('getopt.');
       await page.waitForTimeout(500);
       await page.keyboard.press('Tab');
       // we need to wait until the completer gets bound to the cell after entering it
