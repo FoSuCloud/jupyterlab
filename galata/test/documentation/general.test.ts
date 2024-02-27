@@ -712,8 +712,10 @@ test('HTML Display', async ({ page, tmpPath }) => {
 
   await page.click('.jp-CodeConsole-input >> .cm-content');
   await page.keyboard.insertText('from IPython.display import display, HTML');
+  await page.waitForTimeout(500);
   await page.keyboard.press('Enter');
   await page.keyboard.insertText("display(HTML('<h1>Hello World</h1>'))");
+  await page.waitForTimeout(500);
   await page.keyboard.press('Shift+Enter');
 
   expect(await page.screenshot()).toMatchSnapshot(
