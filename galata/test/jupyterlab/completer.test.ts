@@ -161,7 +161,9 @@ test.describe('Completer', () => {
       await page.waitForSelector('[aria-label="Code Cell Content"]');
       await page.waitForSelector('text=| Idle');
 
-      await page.keyboard.type('import getopt\ngetopt.');
+      await page.keyboard.type('import getopt');
+      await page.keyboard.press('Enter');
+      await page.keyboard.type('getopt.');
       await page.keyboard.press('Tab');
       // we need to wait until the completer gets bound to the cell after entering it
       await page.waitForTimeout(50);
