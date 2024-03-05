@@ -92,6 +92,11 @@ const JUPYTER_CELL_MIME = 'application/vnd.jupyter.cells';
  * The data attribute added to a widget that can undo.
  */
 const UNDOER = 'jpUndoer';
+/**
+ * The data attribute Whether the console interaction mimics the notebook
+ * or terminal keyboard shortcuts.
+ */
+const INTERACTION_MODE = 'jpInteractionMode';
 
 /**
  * The data attribute Whether the console interaction mimics the notebook
