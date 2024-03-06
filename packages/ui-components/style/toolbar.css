@@ -66,11 +66,16 @@
   user-select: none;
 }
 
-jp-button.jp-ToolbarButtonComponent .jp-ToolbarButtonComponent-label {
+button.jp-ToolbarButtonComponent .jp-ToolbarButtonComponent-label {
   font-size: var(--jp-ui-font-size1);
   line-height: 100%;
+  padding-left: 2px;
   color: var(--jp-ui-font-color1);
   font-family: var(--jp-ui-font-family);
+}
+
+jp-button.jp-Toolbar-kernelName {
+  color: var(--jp-ui-font-color1);
 }
 
 .jp-ToolbarButtonComponent::part(content) {

@@ -42,7 +42,7 @@ test('Render Switch Kernel ToolbarButton', async ({ page }) => {
   await page.notebook.createNew();
 
   const label = await page.$(
-    'jp-button.jp-ToolbarButtonComponent.jp-Toolbar-kernelName .jp-ToolbarButtonComponent-label'
+    'jp-button.jp-Toolbar-kernelName .jp-ToolbarButtonComponent-label'
   );
   const labelStyle = await page.evaluate(el => getComputedStyle(el), label);
 
