@@ -99,12 +99,6 @@ const UNDOER = 'jpUndoer';
 const INTERACTION_MODE = 'jpInteractionMode';
 
 /**
- * The data attribute Whether the console interaction mimics the notebook
- * or terminal keyboard shortcuts.
- */
-const INTERACTION_MODE = 'jpInteractionMode';
-
-/**
  * A widget containing a Jupyter console.
  *
  * #### Notes

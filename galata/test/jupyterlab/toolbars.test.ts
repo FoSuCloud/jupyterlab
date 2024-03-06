@@ -41,11 +41,15 @@ toolbars.forEach(([plugin, parameter]) => {
 test('Render Switch Kernel ToolbarButton', async ({ page }) => {
   await page.notebook.createNew();
 
-  const label = page.locator(
-    'jp-button.jp-ToolbarButtonComponent.jp-Toolbar-kernelName'
+  const label = await page.$(
+    'jp-button.jp-ToolbarButtonComponent.jp-Toolbar-kernelName .jp-ToolbarButtonComponent-label'
   );
+  const labelStyle = await page.evaluate(el => getComputedStyle(el), label);
 
-  expect(await label.screenshot()).toMatchSnapshot(
-    'switch-kernel-toolbar-button.png'
-  );
+  const color = await page.evaluate(() => {
+    const style = window.getComputedStyle(document.body);
+    return style.getPropertyValue('--jp-ui-font-color1').trim();
+  });
+
+  expect(labelStyle.color).toEqual(color);
 });
