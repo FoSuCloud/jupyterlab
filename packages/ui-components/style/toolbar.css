@@ -74,8 +74,7 @@ button.jp-ToolbarButtonComponent .jp-ToolbarButtonComponent-label {
   font-family: var(--jp-ui-font-family);
 }
 
-.jp-Toolbar .jp-ToolbarButtonComponent,
-.jp-Toolbar .jp-Toolbar-item .jp-HTMLSelect select {
+.jp-Toolbar .jp-ToolbarButtonComponent {
   color: var(--jp-ui-font-color1);
 }
 
