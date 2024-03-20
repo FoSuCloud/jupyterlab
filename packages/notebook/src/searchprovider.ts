@@ -587,7 +587,7 @@ export class NotebookSearchProvider extends SearchProvider<NotebookPanel> {
 
         break;
     }
-    this._stateChanged.emit();
+    // this._stateChanged.emit();
   }
 
   private async _stepNext(
