@@ -5,7 +5,7 @@ on:
     types: [created]
   push:
     branches:
-      - ui-test
+      - main
   pull_request:
 
 env:

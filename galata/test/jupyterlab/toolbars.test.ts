@@ -37,19 +37,47 @@ toolbars.forEach(([plugin, parameter]) => {
     expect(missingCommands).toEqual([]);
   });
 });
-
-test('Render Switch Kernel ToolbarButton', async ({ page }) => {
-  await page.notebook.createNew();
-
-  const label = await page.$(
-    'jp-button.jp-Toolbar-kernelName .jp-ToolbarButtonComponent-label'
-  );
-  const labelStyle = await page.evaluate(el => getComputedStyle(el), label);
-
-  const color = await page.evaluate(() => {
-    const style = window.getComputedStyle(document.body);
-    return style.getPropertyValue('--jp-ui-font-color1').trim();
+test.describe('Toolbar Button', () => {
+  test.beforeEach(async ({ page, tmpPath }) => {
+    await page.notebook.createNew();
   });
 
-  expect(labelStyle.color).toEqual(color);
+  test('Render Switch Kernel ToolbarButton in default theme', async ({
+    page
+  }) => {
+    const label = await page.$(
+      'jp-button.jp-Toolbar-kernelName .jp-ToolbarButtonComponent-label'
+    );
+    const labelColor = await page.evaluate(
+      el => getComputedStyle(el).color,
+      label
+    );
+
+    const color = await page.evaluate(() =>
+      getComputedStyle(document.body)
+        .getPropertyValue('--jp-ui-font-color1')
+        .trim()
+    );
+
+    expect(labelColor).toEqual(color);
+  });
+
+  test('Render Switch Kernel ToolbarButton in dark theme', async ({ page }) => {
+    await page.theme.setDarkTheme();
+    const label = await page.$(
+      'jp-button.jp-Toolbar-kernelName .jp-ToolbarButtonComponent-label'
+    );
+    const labelColor = await page.evaluate(
+      el => getComputedStyle(el).color,
+      label
+    );
+
+    const color = await page.evaluate(() =>
+      getComputedStyle(document.body)
+        .getPropertyValue('--jp-ui-font-color1')
+        .trim()
+    );
+
+    expect(labelColor).toEqual(color);
+  });
 });
